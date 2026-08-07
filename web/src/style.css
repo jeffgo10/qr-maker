@@ -1,0 +1,56 @@
+:root {
+  --ink: #0b1f1a;
+  --ink-soft: #1a3a31;
+  --paper: #f4efe4;
+  --paper-deep: #e8dfcf;
+  --signal: #e8ff6a;
+  --ember: #ff6b3d;
+  --mist: rgba(11, 31, 26, 0.08);
+  --glow: rgba(232, 255, 106, 0.35);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--font-body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 55% at 12% -10%, var(--glow), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 95% 15%, rgba(255, 107, 61, 0.18), transparent 50%),
+    linear-gradient(165deg, #f7f2e8 0%, #ebe3d4 48%, #e0d5c2 100%);
+  background-attachment: fixed;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

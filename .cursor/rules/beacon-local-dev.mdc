@@ -1,0 +1,45 @@
+---
+description: Local dev commands, ports, and gotchas for Beacon QR Maker
+alwaysApply: false
+globs: package.json,web/vite.config.ts,api/src/main.ts,README.md
+---
+
+# Local development
+
+## Daily (one command)
+
+```bash
+npm run dev   # API :3401 + web :5401 (aggregated logs via concurrently)
+```
+
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Both packages with prefixed watch logs |
+| `npm run dev:api` | NestJS watch only (`:3401`) |
+| `npm run dev:web` | Vite only (`:5401`) |
+| `npm test` / `npm run test:cov` | Unit tests (+ coverage) |
+| `npm run build` | Build api + web |
+
+Open **http://localhost:5401**.
+
+## Ports
+
+| Port | Service |
+|---|---|
+| 3401 | Nest API |
+| 5401 | Vue (Vite); proxies `/api` → `http://localhost:3401` |
+
+Avoid `3000` / `5173` / `5174`.
+
+## Resolved gotchas
+
+| Symptom | Fix |
+|---|---|
+| API fails to bind / wrong app on port | Confirm `api/src/main.ts` uses `3401`, not `3000` |
+| `/api/qr/generate` 404 from the browser | Vite must proxy `/api` → `:3401`; restart `npm run dev:web` after `vite.config.ts` changes |
+| UI works but API is down | Expected today — generation is browser-side; API only needed for server endpoint testing |
+| Coverage / tests fail after moving QR logic | Put pure logic in `web/src/lib/qr.ts` and keep specs beside it |
+
+## Prerequisites
+
+Node 20+ (repo developed on Node 24), npm. Optional: [GitHub CLI](https://cli.github.com/) (`gh`) for `/create-github-pr`.

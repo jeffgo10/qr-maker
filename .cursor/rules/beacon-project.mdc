@@ -1,0 +1,57 @@
+---
+description: Beacon QR Maker project structure, stack, and coding conventions
+alwaysApply: true
+---
+
+# Beacon — project context
+
+**Brand:** Beacon (user-facing QR maker).  
+**Repo:** Vue + NestJS monorepo for generating QR codes with optional center and finder-square marks.
+
+## Layout
+
+| Path | Role |
+|---|---|
+| `web/` | Vue 3 + Vite + TypeScript — UI, browser-side QR generation |
+| `api/` | NestJS — retained server QR endpoint (`POST /qr/generate`) for future use |
+| `web/src/lib/qr.ts` | Pure QR generation + finder geometry (preferred place for logic changes) |
+| `web/src/App.vue` | Product UI (controls, preview, download) |
+| `api/src/qr/` | Nest QR module (`QrService`, controller, DTO) |
+
+## Architecture (current)
+
+- **Preview / download run in the browser** via `generateQrPng()` in `web/src/lib/qr.ts`.
+- Nest API is **kept in-repo** but is **not required** for the current UI flow.
+- Prefer changing browser generation first; update API only when server-side parity is needed.
+
+## Ports
+
+| Port | Service |
+|---|---|
+| `5401` | Vue web (Vite) |
+| `3401` | Nest API |
+
+Do **not** use `3000`, `5173`, or `5174` — reserved by other local projects.
+
+## Coding conventions
+
+- Minimize diff scope; match existing naming, imports, and patterns.
+- Keep QR math / rendering in `web/src/lib/qr.ts` (testable); keep Vue for UI state and wiring.
+- Error correction for branded codes: `H`.
+- Finder overlays keep the outer ring; only clear/replace the inner finder area.
+- Reusable helpers live under `web/src/lib/` (not inline in components when logic is non-trivial).
+- CSS variables for brand colors live in `web/src/style.css` (`--ink`, `--signal`, `--ember`, etc.).
+
+## Tests
+
+```bash
+npm test          # api + web
+npm run test:cov  # with coverage
+```
+
+- Web: Vitest (`web/src/lib/qr.spec.ts`)
+- API: Jest (`api/src/qr/qr.service.spec.ts`)
+
+## Key docs
+
+`README.md`, `.cursor/rules/beacon-local-dev.mdc`, `.cursor/rules/clean-code.mdc`.

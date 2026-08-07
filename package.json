@@ -1,0 +1,23 @@
+{
+  "name": "qr-maker",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently -n api,web -c teal,yellow --kill-others-on-fail \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "npm --prefix api run start:dev",
+    "dev:web": "npm --prefix web run dev",
+    "build": "concurrently -n api,web -c teal,yellow \"npm run build:api\" \"npm run build:web\"",
+    "build:api": "npm --prefix api run build",
+    "build:web": "npm --prefix web run build",
+    "start:api": "npm --prefix api run start:prod",
+    "test": "npm run test:api && npm run test:web",
+    "test:api": "npm --prefix api run test",
+    "test:web": "npm --prefix web run test",
+    "test:cov": "npm run test:cov:api && npm run test:cov:web",
+    "test:cov:api": "npm --prefix api run test:cov",
+    "test:cov:web": "npm --prefix web run test:cov"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
