@@ -54,7 +54,7 @@ The Vue app now generates the QR image fully in the browser, including center an
 ## Deploy (Cloudflare Workers)
 
 Worker name: `beacon`  
-Custom domain: [beacon.liteshademedia.com](https://beacon.liteshademedia.com)
+Custom domain: [beaconqr.liteshademedia.com](https://beaconqr.liteshademedia.com)
 
 The web app is a static Vue SPA deployed with Wrangler Workers Assets (`web/wrangler.jsonc`). The Nest API is not part of this deploy.
 

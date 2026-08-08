@@ -17,7 +17,7 @@ alwaysApply: true
 | `web/src/lib/qr.ts` | Pure QR generation + finder geometry (preferred place for logic changes) |
 | `web/src/App.vue` | Product UI (controls, preview, download) |
 | `web/src/wc/liteshade-brand.ts` | r2wc wrapper for `@jeffgo10/helpers` `LiteShadeBrand` → `<liteshade-brand>` |
-| `web/wrangler.jsonc` | Cloudflare Workers Assets config (SPA → `beacon.liteshademedia.com`) |
+| `web/wrangler.jsonc` | Cloudflare Workers Assets config (SPA → `beaconqr.liteshademedia.com`) |
 | `api/src/qr/` | Nest QR module (`QrService`, controller, DTO) |
 
 ## Architecture (current)

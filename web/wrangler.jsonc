@@ -8,7 +8,7 @@
   },
   "routes": [
     {
-      "pattern": "beacon.liteshademedia.com",
+      "pattern": "beaconqr.liteshademedia.com",
       "custom_domain": true
     }
   ]
