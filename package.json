@@ -9,6 +9,8 @@
     "build": "concurrently -n api,web -c teal,yellow \"npm run build:api\" \"npm run build:web\"",
     "build:api": "npm --prefix api run build",
     "build:web": "npm --prefix web run build",
+    "deploy": "npm --prefix web run deploy",
+    "preview:cf": "npm --prefix web run preview:cf",
     "start:api": "npm --prefix api run start:prod",
     "test": "npm run test:api && npm run test:web",
     "test:api": "npm --prefix api run test",

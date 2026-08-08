@@ -300,6 +300,17 @@ onBeforeUnmount(() => {
         </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <p class="credit">
+        <span>Made by</span>
+        <liteshade-brand
+          color="currentColor"
+          size="18"
+          referral="beacon"
+        ></liteshade-brand>
+      </p>
+    </footer>
   </div>
 </template>
 
@@ -602,6 +613,31 @@ input[type='range'] {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
+}
+
+.site-footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(11, 31, 26, 0.1);
+  animation: rise 0.85s ease 0.12s both;
+}
+
+.credit {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  color: rgba(11, 31, 26, 0.62);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.credit liteshade-brand {
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 
 .primary,

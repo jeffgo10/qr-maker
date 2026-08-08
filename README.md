@@ -17,10 +17,15 @@ Finder images sit inside the corner squares while the outer ring is kept so code
 
 - **web** — Vue 3 + Vite + TypeScript + browser-side `qrcode` rendering
 - **api** — NestJS + `qrcode` + Sharp (default port **3401**), retained for future server-side work
+- **brand** — `LiteShadeBrand` from `@jeffgo10/helpers`, wrapped with `@r2wc/react-to-web-component` as `<liteshade-brand>`
 
 ## Setup
 
 ```bash
+# GitHub Packages auth for @jeffgo10/*
+export GITHUB_TOKEN=ghp_xxx   # needs read:packages
+cp web/.npmrc.example web/.npmrc
+
 npm --prefix api install
 npm --prefix web install
 ```
@@ -45,6 +50,39 @@ Open [http://localhost:5401](http://localhost:5401).
 ## Current architecture
 
 The Vue app now generates the QR image fully in the browser, including center and finder image overlays. The NestJS API is still present in the repo, but it is no longer required for the current preview/download flow.
+
+## Deploy (Cloudflare Workers)
+
+Worker name: `beacon`  
+Custom domain: [beaconqr.liteshademedia.com](https://beaconqr.liteshademedia.com)
+
+The web app is a static Vue SPA deployed with Wrangler Workers Assets (`web/wrangler.jsonc`). The Nest API is not part of this deploy.
+
+### One-time setup
+
+1. Create a Cloudflare API token with Workers Scripts Edit, Account Settings Read, and Zone DNS Edit for `liteshademedia.com`.
+2. Add GitHub repo secrets:
+   - `CLOUDFLARE_API_TOKEN`
+   - `CLOUDFLARE_ACCOUNT_ID`
+   - `GH_PACKAGES_TOKEN` (optional) — PAT with `read:packages` if the default Actions token cannot install `@jeffgo10/helpers`
+
+### Local deploy
+
+```bash
+npm run deploy
+```
+
+Requires Cloudflare auth (`npx wrangler login` or the same `CLOUDFLARE_*` env vars).
+
+### CI
+
+Pushes to `master` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the Vue app and deploys the Worker. You can also run it manually via **Actions → Deploy to Cloudflare Workers → Run workflow**.
+
+### Preview in the Workers runtime
+
+```bash
+npm run preview:cf
+```
 
 ## Tests
 

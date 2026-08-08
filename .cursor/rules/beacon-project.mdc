@@ -16,6 +16,8 @@ alwaysApply: true
 | `api/` | NestJS — retained server QR endpoint (`POST /qr/generate`) for future use |
 | `web/src/lib/qr.ts` | Pure QR generation + finder geometry (preferred place for logic changes) |
 | `web/src/App.vue` | Product UI (controls, preview, download) |
+| `web/src/wc/liteshade-brand.ts` | r2wc wrapper for `@jeffgo10/helpers` `LiteShadeBrand` → `<liteshade-brand>` |
+| `web/wrangler.jsonc` | Cloudflare Workers Assets config (SPA → `beaconqr.liteshademedia.com`) |
 | `api/src/qr/` | Nest QR module (`QrService`, controller, DTO) |
 
 ## Architecture (current)
@@ -23,6 +25,7 @@ alwaysApply: true
 - **Preview / download run in the browser** via `generateQrPng()` in `web/src/lib/qr.ts`.
 - Nest API is **kept in-repo** but is **not required** for the current UI flow.
 - Prefer changing browser generation first; update API only when server-side parity is needed.
+- **Production web** deploys as static Workers Assets (`npm run deploy` / GitHub Actions on `master`).
 
 ## Ports
 
