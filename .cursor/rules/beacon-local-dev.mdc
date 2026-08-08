@@ -19,6 +19,8 @@ npm run dev   # API :3401 + web :5401 (aggregated logs via concurrently)
 | `npm run dev:web` | Vite only (`:5401`) |
 | `npm test` / `npm run test:cov` | Unit tests (+ coverage) |
 | `npm run build` | Build api + web |
+| `npm run deploy` | Build web + deploy to Cloudflare Workers |
+| `npm run preview:cf` | Build web + run Wrangler local preview |
 
 Open **http://localhost:5401**.
 
@@ -30,6 +32,10 @@ Open **http://localhost:5401**.
 | 5401 | Vue (Vite); proxies `/api` → `http://localhost:3401` |
 
 Avoid `3000` / `5173` / `5174`.
+
+## Deploy
+
+Production web is Cloudflare Workers Assets (`web/wrangler.jsonc` → `beacon.liteshademedia.com`). CI: `.github/workflows/deploy.yml` on `master`. Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, and optionally `GH_PACKAGES_TOKEN` for `@jeffgo10/*`.
 
 ## Resolved gotchas
 

@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "beacon",
+  "compatibility_date": "2025-07-16",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    {
+      "pattern": "beacon.liteshademedia.com",
+      "custom_domain": true
+    }
+  ]
+}
