@@ -1,0 +1,164 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.field span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(11, 31, 26, 0.55);
+}
+
+textarea,
+select,
+input[type='color'] {
+  border: 1px solid rgba(11, 31, 26, 0.14);
+  background: rgba(255, 252, 245, 0.72);
+  color: var(--ink);
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+textarea:focus,
+select:focus,
+input[type='color']:focus {
+  outline: none;
+  border-color: rgba(11, 31, 26, 0.45);
+  box-shadow: 0 0 0 3px rgba(232, 255, 106, 0.45);
+  background: #fffdf8;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 5.5rem;
+}
+
+input[type='color'] {
+  padding: 0.35rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.panel {
+  padding: 1.1rem 0 0.2rem;
+  border-top: 1px solid rgba(11, 31, 26, 0.1);
+}
+
+.panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.panel h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.upload {
+  position: relative;
+  display: block;
+  border: 1.5px dashed rgba(11, 31, 26, 0.22);
+  border-radius: 16px;
+  min-height: 7.5rem;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(232, 255, 106, 0.12), transparent 55%),
+    rgba(255, 252, 245, 0.55);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    transform 0.25s ease;
+}
+
+.upload:hover {
+  border-color: rgba(11, 31, 26, 0.45);
+  transform: translateY(-2px);
+}
+
+.upload input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-empty,
+.upload-preview {
+  display: grid;
+  place-items: center;
+  min-height: 7.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.upload-empty {
+  gap: 0.25rem;
+}
+
+.upload-empty strong {
+  font-weight: 600;
+}
+
+.upload-empty span {
+  font-size: 0.85rem;
+  color: rgba(11, 31, 26, 0.55);
+}
+
+.upload-preview img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(11, 31, 26, 0.18);
+}
+
+.ghost {
+  border: none;
+  background: transparent;
+  color: var(--ember);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0;
+}
+
+.ghost:hover {
+  text-decoration: underline;
+}
+
+.chip {
+  border: 1px solid rgba(11, 31, 26, 0.16);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.42rem 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.chip:hover {
+  border-color: rgba(11, 31, 26, 0.35);
+  transform: translateY(-1px);
+}
+
+.chip.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--signal);
+}

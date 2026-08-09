@@ -2,8 +2,8 @@
 
 declare global {
   interface HTMLElementTagNameMap {
-    'liteshade-brand': HTMLElement
+    'liteshade-brand': HTMLElement;
   }
 }
 
-export {}
+export {};
