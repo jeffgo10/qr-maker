@@ -1,15 +1,15 @@
-import { createElement, type CSSProperties } from 'react'
-import r2wc from '@r2wc/react-to-web-component'
-import { LiteShadeBrand } from '@jeffgo10/helpers/brand'
-import { ScrambleRevealProvider } from '@jeffgo10/helpers/text'
+import { createElement, type CSSProperties } from 'react';
+import r2wc from '@r2wc/react-to-web-component';
+import { LiteShadeBrand } from '@jeffgo10/helpers/brand';
+import { ScrambleRevealProvider } from '@jeffgo10/helpers/text';
 
 export type LiteShadeBrandElementProps = {
-  color?: string
-  size?: number
-  referral?: string
-  href?: string
-  gap?: string
-}
+  color?: string;
+  size?: number;
+  referral?: string;
+  href?: string;
+  gap?: string;
+};
 
 /**
  * React tree mounted inside the `<liteshade-brand>` custom element.
@@ -37,7 +37,7 @@ function LiteShadeBrandElement({
         verticalAlign: 'middle',
       } satisfies CSSProperties,
     }),
-  )
+  );
 }
 
 const LiteShadeBrandWebComponent = r2wc(LiteShadeBrandElement, {
@@ -48,16 +48,16 @@ const LiteShadeBrandWebComponent = r2wc(LiteShadeBrandElement, {
     href: 'string',
     gap: 'string',
   },
-})
+});
 
-const TAG = 'liteshade-brand'
+const TAG = 'liteshade-brand';
 
 export function registerLiteShadeBrandElement() {
-  if (typeof window === 'undefined') return
-  if (customElements.get(TAG)) return
-  customElements.define(TAG, LiteShadeBrandWebComponent)
+  if (typeof window === 'undefined') return;
+  if (customElements.get(TAG)) return;
+  customElements.define(TAG, LiteShadeBrandWebComponent);
 }
 
-registerLiteShadeBrandElement()
+registerLiteShadeBrandElement();
 
-export { LiteShadeBrandElement, LiteShadeBrandWebComponent }
+export { LiteShadeBrandElement, LiteShadeBrandWebComponent };

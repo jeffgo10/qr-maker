@@ -41,6 +41,12 @@ alwaysApply: true
 - Organize code in a logical hierarchy
 - Use consistent file and folder naming conventions
 
+## JavaScript / TypeScript style
+
+- **Always use semicolons** at the end of statements (including in Vue `<script>` blocks).
+- Do not rely on Automatic Semicolon Insertion (ASI).
+- Match existing quote/trailing-comma style in the package you are editing (`api` uses Prettier with `singleQuote` and `trailingComma: "all"`).
+
 ## CSS — Mobile-first
 
 - **Base styles target the smallest viewport (phone).** Add layout and spacing for larger screens with `min-width` media queries only — never desktop-first bases patched by `max-width` overrides.
